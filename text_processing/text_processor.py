@@ -25,3 +25,23 @@ class TextProcessor:
         tokens = normalized_text.split()
 
         return tokens
+
+    
+    def process_documents(self, documents):
+        # Dictionary to store document IDs and their tokens
+        processed_documents = {}
+
+        # Process each document
+        for document in documents:
+
+            # Get the original document ID
+            doc_id = document.doc_id
+
+            # Extract and tokenize the document content
+            tokens = self.tokenize(document.content)
+
+            # Store tokens using the original document ID
+            processed_documents[doc_id] = tokens
+
+        return processed_documents
+
