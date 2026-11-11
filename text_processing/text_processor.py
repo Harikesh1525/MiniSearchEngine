@@ -15,3 +15,13 @@ class TextProcessor:
         text = " ".join(text.split())
 
         return text
+
+    
+    def tokenize(self, text):
+        # First normalize the input text
+        normalized_text = self.normalize(text)
+
+        # Split normalized text into individual tokens
+        tokens = normalized_text.split()
+
+        return tokens
