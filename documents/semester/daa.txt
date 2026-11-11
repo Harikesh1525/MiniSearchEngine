@@ -1,1 +1,0 @@
-Algorithms are used to solve computational problems.
