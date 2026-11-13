@@ -130,6 +130,33 @@ class TestQueryProcessor(unittest.TestCase):
                 self.documents
             )
 
+        # Test snippet extraction
+    def test_create_snippet(self):
+
+        content = "Python is a popular programming language."
+
+        result = self.processor.create_snippet(
+            content,
+            {"python"}
+        )
+
+        self.assertEqual(
+            result,
+            "Python is a popular programming language."
+        )
+
+    # Test snippet length
+    def test_snippet_length(self):
+
+        content = "Python " + ("programming language " * 30)
+
+        result = self.processor.create_snippet(
+            content,
+            {"python"}
+        )
+
+        self.assertLessEqual(len(result), 183)
+
 
 if __name__ == "__main__":
     unittest.main()
