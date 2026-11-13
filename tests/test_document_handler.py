@@ -54,6 +54,26 @@ class TestDocumentReader(unittest.TestCase):
 
         self.assertIn("Sample DOCX document", content)
 
+    def test_docx_table_extraction(self):
+        path = self.folder / "table.docx"
+
+        doc = WordDocument()
+        table = doc.add_table(rows=2, cols=2)
+
+        table.cell(0, 0).text = "Name"
+        table.cell(0, 1).text = "Age"
+        table.cell(1, 0).text = "Murali"
+        table.cell(1, 1).text = "25"
+
+        doc.save(path)
+
+        content = self.reader.read(path)
+
+        self.assertIn("Name", content)
+        self.assertIn("Age", content)
+        self.assertIn("Murali", content)
+        self.assertIn("25", content)
+
     def test_empty_txt(self):
         path = self.folder / "empty.txt"
         path.write_text("")
@@ -68,6 +88,17 @@ class TestDocumentReader(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             self.reader.read(path)
+
+    def test_uppercase_txt_extension(self):
+        path = self.folder / "SAMPLE.TXT"
+        path.write_text("Testing uppercase extension")
+
+        content = self.reader.read(path)
+
+        self.assertEqual(
+            content,
+            "Testing uppercase extension"
+        )
 
 
 class TestDocumentManager(unittest.TestCase):
@@ -148,4 +179,3 @@ class TestDocumentManager(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
