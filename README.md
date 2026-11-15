@@ -168,8 +168,8 @@ The test suite covers document reading and loading, text normalization and token
 
 **Project 13: Mini Search Engine**
 
-Document Handling and Processing - HARIKESH (document_handler)
-Text Processing and Tokenization - BHUVAN (text_processing)
-Building Inverted Index          - HARSHITH (inverted_index)
-Query Processing                 - DEVA CHARAN (query_processing)
-Ranking, Integration, testing    - MURALI KRISHNA (Developed ranking in query_processing and main.py) 
+-Document Handling and Processing - HARIKESH (document_handler).
+-Text Processing and Tokenization - BHUVAN (text_processing).
+-Building Inverted Index          - HARSHITH (inverted_index).
+-Query Processing                 - DEVA CHARAN (query_processing).
+-Ranking, Integration, testing    - MURALI KRISHNA (Developed ranking in query_processing and main.py).
