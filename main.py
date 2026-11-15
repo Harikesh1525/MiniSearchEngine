@@ -82,7 +82,7 @@ def main():
                 print(f"\n{rank}. {result['file_name']}")
                 print(f"   Path: {result['path']}")
                 print(f"   Matched terms: {', '.join(result['matched_terms'])}")
-                print(f"   Snippet: {result['snippet']}")
+                
 
     except (FileNotFoundError, NotADirectoryError) as error:
         print(f"\nFolder error: {error}")
