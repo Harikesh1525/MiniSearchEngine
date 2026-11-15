@@ -6,9 +6,6 @@ from query_processing.query_processor import QueryProcessor
 
 
 def main():
-    print("=" * 50)
-    print("          MINI SEARCH ENGINE")
-    print("=" * 50)
 
     # Step 1: Get folder path from the user
     folder_path = input("\nEnter the folder path to search: ").strip()
