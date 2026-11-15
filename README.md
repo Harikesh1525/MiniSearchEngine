@@ -11,7 +11,7 @@ A Python-based mini search engine that searches local documents using text proce
 - Processes queries using the same normalization and tokenization steps.
 - Supports prefix matching (for example, `pyth` can match `python`).
 - Ranks matching documents using a TF-IDF-style score.
-- Displays filenames, file paths, matched terms, and text snippets.
+- Displays filenames, file paths, matched terms.
 - Reports files that could not be read while continuing with readable documents.
 
 ## Project structure
@@ -168,8 +168,8 @@ The test suite covers document reading and loading, text normalization and token
 
 **Project 13: Mini Search Engine**
 
-Document Handling and Processing - HARIKESH
-Text Processing and Tokenization - BHUVAN
-Building Inverted Index          - HARSHITH
-Query Processing and Ranking     - DEVA CHARAN
-Integrating all modules in main and testing - MURALI KRISHNA
+Document Handling and Processing - HARIKESH (document_handler)
+Text Processing and Tokenization - BHUVAN (text_processing)
+Building Inverted Index          - HARSHITH (inverted_index)
+Query Processing                 - DEVA CHARAN (query_processing)
+Ranking, Integration, testing    - MURALI KRISHNA (Developed ranking in query_processing and main.py) 
