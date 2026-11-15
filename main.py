@@ -19,23 +19,26 @@ def main():
         return
 
     try:
-        # Step 2: Load documents
+    # Step 2: Load documents
         print("\nLoading documents...")
         document_manager = DocumentManager(folder_path)
         documents = document_manager.load_documents()
 
+    # Display files that could not be read
+    # Do this before checking whether documents were loaded.
+        errors = document_manager.get_errors()
+
+        if errors:
+            print(f"\nWarning: {len(errors)} file(s) could not be read.")
+
+            for error in errors:
+                print(f"- {error['path']}: {error['error']}")
+
         if not documents:
-            print("No supported documents found in this folder.")
+            print("No readable supported documents found in this folder.")
             return
 
         print(f"Loaded {len(documents)} documents.")
-
-        # Display files that could not be read
-        errors = document_manager.get_errors()
-        if errors:
-            print(f"\nWarning: {len(errors)} file(s) could not be read.")
-            for error in errors:
-                print(f"- {error['path']}: {error['error']}")
 
         # Step 3: Process document text
         print("\nProcessing documents...")

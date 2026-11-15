@@ -28,52 +28,6 @@ class QueryProcessor:
             (total_documents + 1) / (document_frequency + 1)
         )
 
-        # Extract a short sentence containing a matched word
-    def create_snippet(self, content, matched_terms, max_length=180):
-
-        import re
-
-        if not content or not matched_terms:
-            return ""
-
-        # Split document content into sentences
-        sentences = re.split(r'(?<=[.!?])\s+', content)
-
-        # Find the sentence containing a matched word
-        for sentence in sentences:
-
-            for term in matched_terms:
-
-                pattern = r'\b' + re.escape(term) + r'\b'
-
-                if re.search(pattern, sentence, re.IGNORECASE):
-
-                    # Return the complete sentence if it is short
-                    if len(sentence) <= max_length:
-                        return sentence.strip()
-
-                    # Otherwise extract a short section around the word
-                    match = re.search(
-                        pattern,
-                        sentence,
-                        re.IGNORECASE
-                    )
-
-                    start = max(0, match.start() - 70)
-                    end = min(len(sentence), start + max_length)
-
-                    snippet = sentence[start:end].strip()
-
-                    if start > 0:
-                        snippet = "..." + snippet
-
-                    if end < len(sentence):
-                        snippet += "..."
-
-                    return snippet
-
-        return ""
-
     # Search documents using the inverted index
     def search(self, query, inverted_index, documents):
 
@@ -160,10 +114,8 @@ class QueryProcessor:
                 "file_name": document.file_name,
                 "path": document.path,
                 "matched_terms": sorted(matched_terms[doc_id]),
-                "snippet": self.create_snippet(
-                    document.content,
-                    matched_terms[doc_id]
-                )
+                
+                
             })
 
         return results
